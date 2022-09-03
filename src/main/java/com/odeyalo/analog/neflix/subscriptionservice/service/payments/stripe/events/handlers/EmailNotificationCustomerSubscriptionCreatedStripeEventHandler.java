@@ -23,7 +23,7 @@ public class EmailNotificationCustomerSubscriptionCreatedStripeEventHandler exte
 
     @Override
     public void handleEvent(Event event) {
-        if (!getEventType().equals(event.getType())) {
+        if (!isCorrectEventReceived(event)) {
             this.logger.error("Wrong event parameter was received: {}", event);
             return;
         }

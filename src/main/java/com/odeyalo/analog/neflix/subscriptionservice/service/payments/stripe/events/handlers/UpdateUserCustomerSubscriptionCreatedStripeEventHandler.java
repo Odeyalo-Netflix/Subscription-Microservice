@@ -5,6 +5,7 @@ import com.odeyalo.analog.neflix.subscriptionservice.repository.StripeSubscripti
 import com.stripe.model.Event;
 import com.stripe.model.StripeObject;
 import com.stripe.model.Subscription;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class UpdateUserCustomerSubscriptionCreatedStripeEventHandler extends CustomerSubscriptionCreatedStripeEventHandler {
     private final StripeSubscriptionInformationRepository repository;
 
+    @Autowired
     public UpdateUserCustomerSubscriptionCreatedStripeEventHandler(StripeSubscriptionInformationRepository repository) {
         this.repository = repository;
     }
@@ -23,7 +25,7 @@ public class UpdateUserCustomerSubscriptionCreatedStripeEventHandler extends Cus
 
     @Override
     public void handleEvent(Event event) {
-        if (!getEventType().equals(event.getType())) {
+        if (!isCorrectEventReceived(event)) {
             this.logger.error("Wrong event parameter was received: {}", event);
             return;
         }
