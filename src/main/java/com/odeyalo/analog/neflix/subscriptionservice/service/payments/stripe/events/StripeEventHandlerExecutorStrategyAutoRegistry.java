@@ -8,13 +8,13 @@ package com.odeyalo.analog.neflix.subscriptionservice.service.payments.stripe.ev
 public interface StripeEventHandlerExecutorStrategyAutoRegistry {
     /**
      * An Strategy type. Key of this strategy
-     * @return - an strategy name
+     * @return - strategy name
      */
     String getStrategyKey();
 
     /**
      * Strategy that will be registered with specific key. It can be called Value
-     * @return - an StripeEventHandlerExecutorStrategy to registry
+     * @return - StripeEventHandlerExecutorStrategy to registry
      */
     StripeEventHandlerExecutorStrategy getStrategy();
 }
