@@ -3,7 +3,7 @@
 Microservice that manage user's subscription, can start, cancel user's subscription  
 Using Stripe API to working with payments.
 
-#Technologies used
+## Technologies used
     Spring Boot
     Spring JPA
     Spring Security
