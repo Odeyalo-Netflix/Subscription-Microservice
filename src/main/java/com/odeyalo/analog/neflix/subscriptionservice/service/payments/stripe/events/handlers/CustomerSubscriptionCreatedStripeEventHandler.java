@@ -11,6 +11,10 @@ public abstract class CustomerSubscriptionCreatedStripeEventHandler implements S
     @Override
     public abstract void handleEvent(Event event);
 
+    protected boolean isCorrectEventReceived(Event event) {
+        return getEventType().equals(event.getType());
+    }
+
     @Override
     public String getEventType() {
         return "customer.subscription.created";
